@@ -1,4 +1,4 @@
-// matrix chain multiplication recursive
+// matrix chain multiplication recursive and memoization
 #include <bits/stdc++.h>
 using namespace std;
 int t[1001][1001];
@@ -23,7 +23,7 @@ int MCM(int arr[], int i, int j)
 }
 int main()
 {
-    int arr[] = {10, 30, 5, 60};
+    int arr[] = {1, 2, 3, 4, 3};
     int n = sizeof(arr) / sizeof(arr[0]);
     memset(t, -1, sizeof(t));
     cout << "Mimimum Number of operations = " << MCM(arr, 1, n - 1);

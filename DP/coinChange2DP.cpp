@@ -52,9 +52,9 @@ int coinChange2(int coin[], int n, int sum)
 
 int main()
 {
-    int coin[] = {3, 2, 1};
+    int coin[] = {9, 6, 5, 1};
     int n = sizeof(coin) / sizeof(coin[0]);
-    int sum = 5;
+    int sum = 11;
     int minCoins = coinChange2(coin, n, sum);
     if (minCoins == I || minCoins == I - 1)
     {

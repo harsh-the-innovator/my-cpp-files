@@ -18,7 +18,7 @@ int MCM(int arr[], int i, int j)
 }
 int main()
 {
-    int arr[] = {10, 30, 5, 60};
+    int arr[] = {1, 2, 3, 4, 3};
     int n = sizeof(arr) / sizeof(arr[0]);
 
     cout << "Mimimum Number of operations = " << MCM(arr, 1, n - 1);

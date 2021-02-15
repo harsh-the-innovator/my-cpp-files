@@ -74,12 +74,14 @@ string printSCS(string X, string Y, int n, int m)
     while (i > 0)
     {
         result.push_back(X[i - 1]);
+        i--;
     }
 
     // if X is empty and Y is non empty then add remaining char of string Y to result
     while (j > 0)
     {
         result.push_back(Y[j - 1]);
+        j--;
     }
     reverse(result.begin(), result.end());
     return result;

@@ -1,32 +1,71 @@
-
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
-
-int maxSubstring(string S)
+void Merge(int a[], int l, int m, int r)
 {
-    int n = S.length();
-    int dp[n + 1];
-    dp[0] = 0;
-    int res = -1;
-    for (int i = 1; i <= n; i++)
+    int nL = m - l + 1;
+    int nR = r - m;
+    int left[nL], right[nR];
+
+    for (int i = 0; i < nL; i++)
+        left[i] = a[l + i];
+    for (int i = 0; i < nR; i++)
+        right[i] = a[m + 1 + i];
+
+    int i = 0, j = 0, k = l;
+    while (i < nL && j < nR)
     {
-        if (S[i - 1] == '0')
+        if (left[i] <= right[j])
         {
-            dp[i] = max(dp[i - 1] + 1, 1);
+            a[k] = left[i];
+            i = i + 1;
         }
-        else if (S[i - 1] == '1')
+        else
         {
-            dp[i] = max(dp[i - 1] - 1, -1);
+            a[k] = right[j];
+            j = j + 1;
         }
-
-        res = max(res, dp[i]);
+        k = k + 1;
     }
-    return res;
-}
 
+    while (i < nL)
+    {
+        a[k] = left[i];
+        i = i + 1;
+        k = k + 1;
+    }
+    while (j < nR)
+    {
+        a[k] = right[j];
+        j = j + 1;
+        k = k + 1;
+    }
+}
+void MergeSort(int a[], int l, int r)
+{
+    int nL, nR;
+    if (l < r)
+    {
+        int mid = (l + r) / 2;
+        MergeSort(a, l, mid);
+        MergeSort(a, mid + 1, r);
+        Merge(a, l, mid, r);
+    }
+}
 int main()
 {
-    string s;
-    cin >> s;
-    cout << maxSubstring(s) << endl;
+    int arr[] = {4, 2, 7, 4, 9, 70, 10, 34};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << "\n"
+         << "Original Array:" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cout << " " << arr[i];
+    }
+    MergeSort(arr, 0, n - 1);
+
+    cout << "\nSorted Array:" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cout << " " << arr[i];
+    }
 }

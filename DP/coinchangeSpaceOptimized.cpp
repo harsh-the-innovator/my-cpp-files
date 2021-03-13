@@ -31,15 +31,18 @@ int minCoins(int coins[], int n, int sum)
                     table[i] = sub_res + 1;
             }
     }
-    return table[sum];
+    if (table[sum] == INT_MAX)
+        return -1;
+    else
+        return table[sum];
 }
 
 // Driver program to test above function
 int main()
 {
-    int coins[] = {9, 6, 5, 1};
+    int coins[] = {9, 6, 5, 3};
     int n = sizeof(coins) / sizeof(coins[0]);
-    int sum = 11;
+    int sum = 2;
     cout << "Minimum coins required is "
          << minCoins(coins, n, sum);
     return 0;

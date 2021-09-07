@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define INF INT_MAX
 #define endl ("\n")
 #define pi (3.141592653589)
 #define mod 1e9 + 7
@@ -18,20 +17,23 @@ using namespace std;
 #define fast \
     ios_base::sync_with_stdio(0), cin.tie(0);
 
-void dfile()
-{
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("input.txt", "w", stdout);
-#endif
-}
-
 int main()
 {
     fast int t;
     cin >> t;
     while (t--)
     {
+        int g1, s1, b1, g2, s2, b2;
+        cin >> g1 >> s1 >> b1 >> g2 >> s2 >> b2;
+        if ((g1 + s1 + b1) > (g2 + s2 + b2))
+        {
+            cout << "1";
+        }
+        else
+        {
+            cout << "2";
+        }
+        cout << endl;
     }
 
     return 0;

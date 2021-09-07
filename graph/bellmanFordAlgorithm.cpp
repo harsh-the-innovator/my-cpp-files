@@ -47,7 +47,7 @@ void bellmanAlgo(vector<Edge> &edgeList, int V, int E, int src)
         int u = edgeList[i].src;
         int v = edgeList[i].dst;
         int weight = edgeList[i].wt;
-        if (dist[u] != INT_MAX && dist[u] + weight < dist[v])
+        if (dist[u] != I && dist[u] + weight < dist[v])
         {
             cout << "Graph contains negative weighted cycle";
             return; // If negative cycle is detected, simply return

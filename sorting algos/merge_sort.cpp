@@ -2,10 +2,11 @@
 using namespace std;
 void Merge(int a[], int l, int m, int r)
 {
-    int nL = m - l + 1;
-    int nR = r - m;
+    int nL = m - l + 1; //left array size  from [l...m]
+    int nR = r - m;     //right array size  from [m+1...r]
     int left[nL], right[nR];
 
+    //filling left and right arrays
     for (int i = 0; i < nL; i++)
         left[i] = a[l + i];
     for (int i = 0; i < nR; i++)
@@ -42,7 +43,6 @@ void Merge(int a[], int l, int m, int r)
 }
 void MergeSort(int a[], int l, int r)
 {
-    int nL, nR;
     if (l < r)
     {
         int mid = (l + r) / 2;

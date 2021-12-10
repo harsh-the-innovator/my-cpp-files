@@ -11,9 +11,9 @@ bool canPlace(int board[D][D], int n, int row, int col, int curNum)
     for (int x = 0; x < n; x++)
     {
         if (board[row][x] == curNum)
-            return false; //row already contains that number
+            return false; // row already contains that number
         if (board[x][col] == curNum)
-            return false; //col already contains that number
+            return false; // col already contains that number
     }
 
     // check for box

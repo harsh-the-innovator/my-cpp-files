@@ -1,5 +1,5 @@
-//using adjacency list and priority queue
-//TIME COMPLEXITY = O(ElogV)
+// using adjacency list and priority queue
+// TIME COMPLEXITY = O(ElogV)
 #include <bits/stdc++.h>
 using namespace std;
 #define iPair pair<int, int>
@@ -16,7 +16,8 @@ void printShortestDistances(vector<int> &dist, int V)
 
 void dijkstraAlgo(vector<iPair> graph[], int V, int src)
 {
-    //creating a min heap
+    // creating a min heap
+    //  pair of {distance,vertex}
     priority_queue<iPair, vector<iPair>, greater<iPair>> pq;
 
     vector<int> dist(V, I);
@@ -57,7 +58,7 @@ int main()
     int V, E, u, v, w;
     cin >> V >> E;
 
-    //graph in the form of adjacency list
+    // graph in the form of adjacency list
     vector<iPair> graph[V];
     for (int i = 0; i < E; i++)
     {

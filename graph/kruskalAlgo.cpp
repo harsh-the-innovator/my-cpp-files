@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Edge
+class Edge
 {
+public:
     int src, dst, wt;
     Edge(int u, int v, int w)
     {
@@ -17,46 +18,46 @@ bool compare(Edge &e1, Edge &e2)
     return e1.wt < e2.wt;
 }
 
-//UNION BY RANK AND PATH COMPRESSION CODE:-
+// UNION BY RANK AND PATH COMPRESSION CODE:-
 int find(int v, vector<int> &parent)
 {
-    if (parent[v] == -1)
+    if (parent[v] == v)
         return v;
-    return parent[v] = find(parent[v], parent); //path compression
+    return parent[v] = find(parent[v], parent); // path compression
 }
 void union_op(int fromP, int toP, vector<int> &parent, vector<int> &rank)
 {
-    //UNION by RANK
+    // UNION by RANK
 
-    if (rank[fromP] > rank[toP]) //fromP has higher rank
+    if (rank[fromP] > rank[toP]) // fromP has higher rank
     {
         parent[toP] = fromP;
     }
-    else if (rank[fromP] < rank[toP]) //toP has higher rank
+    else if (rank[fromP] < rank[toP]) // toP has higher rank
     {
         parent[fromP] = toP;
     }
     else
     {
-        //Both have same rank and so anyone can be made as parent
+        // Both have same rank and so anyone can be made as parent
         parent[fromP] = toP;
-        rank[toP]++; //Increase rank of parent
+        rank[toP]++; // Increase rank of parent
     }
 }
 
-//KRUSKAL ALGO
+// KRUSKAL ALGO
 int kruskalAlgo(vector<Edge> &edgesList, int V, int E)
 {
-    //sorting edges on the basis of their weights in ascending
+    // sorting edges on the basis of their weights in ascending
     sort(edgesList.begin(), edgesList.end(), compare);
 
-    //parent and rank array for disjoint set
+    // parent and rank array for disjoint set
     vector<int> parent(V);
     vector<int> rank(V);
 
     for (int i = 0; i < V; i++)
     {
-        parent[i] = -1;
+        parent[i] = i;
         rank[i] = 0;
     }
 
@@ -104,3 +105,5 @@ int main()
     cout << "Minimum cost spanning tree = ";
     cout << kruskalAlgo(edgesList, V, E);
 }
+// 3 3
+// 0 1 5 1 2 3 0 2 1
